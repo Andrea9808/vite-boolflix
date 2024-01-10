@@ -1,6 +1,16 @@
 <script>
+
+// importo store
+import { store } from '../store';
+
 export default {
-    name: "SearchApp"
+    name: "SearchApp",
+
+    data(){
+        return{
+            store,
+        }
+    }
 }
 </script>
 
@@ -9,4 +19,5 @@ export default {
     <button>INIZIA</button>
 </template>
 
-<style></style>
+<style lang="scss">
+</style>

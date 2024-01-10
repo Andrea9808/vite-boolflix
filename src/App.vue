@@ -2,19 +2,46 @@
 // AXIOS
 import axios from 'axios';
 
-import HeaderApp from './components/HeaderApp.vue';
+// importo store
+import { store } from './store';
 
-export default{
+import HeaderApp from './components/HeaderApp.vue';
+import MainApp from './components/MainApp.vue';
+
+export default {
     components: {
         HeaderApp,
+        MainApp,
+    },
+
+    data() {
+        return {
+            store,
+        }
+    },
+
+    methods: {
+        getMovies() {
+            axios
+            .get(store.apiUrl)
+            .then((res => {
+                console.log(res.data.results);
+            }))
+            .catch((err) => {
+                console.log("errori", err);
+            })
+        }
     }
 }
 </script>
 
 <template>
-    <HeaderApp/>
+    <HeaderApp />
+    <main>
+        <MainApp />
+    </main>
 </template>
 
 <style lang="scss">
-    @use './styles/general.scss';
+@use './styles/general.scss';
 </style>

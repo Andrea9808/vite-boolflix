@@ -7,7 +7,8 @@ export default {
 
     components: {
         SearchApp,
-    }
+    },
+
 }
 </script>
 
@@ -28,14 +29,14 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-    .intro{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 80px;
+.intro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80px;
 
-        .logo{
-            color: red;
-        }
+    .logo {
+        color: red;
     }
+}
 </style>
