@@ -1,22 +1,26 @@
 <script>
 export default {
     name: "MovieCard",
+
+    props: {
+        info: Object
+    },
+
 }
 </script>
 
 <template>
-    <div class="card-container">
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <h6>Titolo</h6>
-                    <h6>Titolo originale</h6>
-                    <h6>Lingua</h6>
-                    <h6>voto</h6>
-                </div>
-            </div>
-        </div>
+    <div class="card">
+        <h6>Titolo: {{ info.title }}</h6>
+        <h6>Titolo originale: {{ info.original_title }}</h6>
+        <h6>Lingua: {{ info.original_language }}</h6>
+        <h6>voto: {{ info.vote_average }}</h6>
     </div>
 </template>
 
-<style></style>
+<style>
+    .card{
+        min-height: 150px;
+        margin-top: 20px;
+    }
+</style>

@@ -26,12 +26,19 @@ export default {
             .get(store.apiUrl)
             .then((res => {
                 console.log(res.data.results);
+                store.movies = res.data.results
             }))
             .catch((err) => {
                 console.log("errori", err);
             })
         }
+    },
+
+    created() {
+        this.getMovies();
     }
+
+    
 }
 </script>
 
