@@ -15,8 +15,8 @@ export default {
 </script>
 
 <template>
-    <input type="text" placeholder="Inserisci il film o la serie che vuoi vedere">
-    <button>INIZIA</button>
+    <input type="text" placeholder="Inserisci il film o la serie che vuoi vedere" v-model.trim="store.searchText" >
+    <button @click.prevent="$emit('search')">Cerca</button>
 </template>
 
 <style lang="scss">

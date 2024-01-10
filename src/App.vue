@@ -22,8 +22,18 @@ export default {
 
     methods: {
         getMovies() {
+
+            let myUrl = store.apiUrl;
+
+            //se l'utente fa una ricerca
+            if(store.searchText !== ""){
+                myUrl += `?title=${store.searchText}` 
+
+            }
+
+
             axios
-            .get(store.apiUrl)
+            .get(myUrl)
             .then((res => {
                 console.log(res.data.results);
                 store.movies = res.data.results

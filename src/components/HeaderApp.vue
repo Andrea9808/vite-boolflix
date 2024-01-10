@@ -21,7 +21,7 @@ export default {
                 </div>
 
                 <div>
-                    <SearchApp />
+                    <SearchApp @search="getMovies"/>
                 </div>
             </div>
         </div>
