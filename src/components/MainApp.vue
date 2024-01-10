@@ -2,7 +2,7 @@
 import MovieCard from './MovieCard.vue';
 
 // importo store
-import { store } from '../store';
+import { store, getMovies } from '../store';
 
 export default{
     name: "MainApp",

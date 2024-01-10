@@ -1,7 +1,7 @@
 <script>
 
 // importo store
-import { store } from '../store';
+import { store, getMovies } from '../store';
 
 export default {
     name: "SearchApp",

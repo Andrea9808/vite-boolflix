@@ -1,9 +1,7 @@
 <script>
-// AXIOS
-import axios from 'axios';
 
 // importo store
-import { store } from './store';
+import { store, getMovies } from './store';
 
 import HeaderApp from './components/HeaderApp.vue';
 import MainApp from './components/MainApp.vue';
@@ -20,35 +18,9 @@ export default {
         }
     },
 
-    methods: {
-        getMovies() {
-
-            let myUrl = store.apiUrl;
-
-            //se l'utente fa una ricerca
-            if(store.searchText !== ""){
-                myUrl += `?title=${store.searchText}` 
-
-            }
-
-
-            axios
-            .get(myUrl)
-            .then((res => {
-                console.log(res.data.results);
-                store.movies = res.data.results
-            }))
-            .catch((err) => {
-                console.log("errori", err);
-            })
-        }
-    },
-
     created() {
-        this.getMovies();
-    }
-
-    
+        getMovies();
+    } 
 }
 </script>
 

@@ -1,6 +1,9 @@
 <script>
 import SearchApp from './SearchApp.vue';
 
+//importo store
+import { store, getMovies } from '../store';
+
 export default {
 
     name: "HeaderApp",
@@ -8,6 +11,12 @@ export default {
     components: {
         SearchApp,
     },
+    
+    data(){
+        return{
+            store,
+        }
+    }
 
 }
 </script>
