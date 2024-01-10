@@ -1,23 +1,17 @@
 <script>
-import SearchApp from './SearchApp.vue';
 
-//importo store
-import { store, getMovies } from '../store';
+// importo store
+import { store } from '../store';
 
 export default {
 
     name: "HeaderApp",
 
-    components: {
-        SearchApp,
-    },
-    
-    data(){
-        return{
+    data() {
+        return {
             store,
         }
-    }
-
+    },
 }
 </script>
 
@@ -30,7 +24,8 @@ export default {
                 </div>
 
                 <div>
-                    <SearchApp @search="getMovies"/>
+                    <input type="text" placeholder="Inserisci il film o la serie che vuoi vedere" v-model.trim="store.searchText" >
+                    <button @click.prevent="$emit('search')">INIZIA</button>
                 </div>
             </div>
         </div>
