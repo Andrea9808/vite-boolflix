@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid bg-black">
         <div class="row">
             <div class="intro">
                 <div class="logo">
@@ -24,7 +24,7 @@ export default {
                 </div>
 
                 <div>
-                    <input type="text" placeholder="Inserisci il film o la serie che vuoi vedere" v-model.trim="store.searchText" @keyup.enter="$emit('search')" >
+                    <input type="text" placeholder="Cerca il tuo film/serie" v-model.trim="store.searchText" @keyup.enter="$emit('search')" >
                     <button @click.prevent="$emit('search')">INIZIA</button>
                 </div>
             </div>
@@ -41,6 +41,21 @@ export default {
 
     .logo {
         color: red;
+        
+        h3{
+            font-size: 50px;
+        }
+    }
+
+    button{
+        color: white;
+        background-color: red;
+        margin-left: 10px;
+        padding: 8px 15px;
+    }
+
+    input{
+        padding: 8px;
     }
 }
 </style>

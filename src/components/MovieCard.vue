@@ -110,6 +110,7 @@ export default {
     .not-found {
         width: 100%;
         height: 500px;
+        border-radius: 5px;
     }
 
     .card-info {
