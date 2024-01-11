@@ -42,6 +42,33 @@ export default {
                 .catch((err) => {
                     console.log("errori", err);
                 })
+                
+                this.getSeries();
+                store.searchText = '';
+        },
+
+        getSeries(){
+
+            let myUrlSeries = store.apiUrlSeries;
+
+            //se l'utente fa una ricerca
+            if(store.searchText !== ""){
+                myUrlSeries += `&query=${store.searchText}`
+            }
+
+
+            console.log("myUrlSeries:", myUrlSeries);
+            
+            axios
+                .get(myUrlSeries)
+                .then((res => {
+                    console.log(res.data.results);
+                    store.series = res.data.results
+                }))
+                .catch((err)=> {
+                    console.log("errori", err);
+                })
+
         }
     },
 
