@@ -17,6 +17,15 @@ export default {
                 ko: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/420px-Flag_of_South_Korea.svg.png',
             },
 
+            cover: false,
+
+        }
+
+    },
+
+    methods: {
+        rotazioneCard() {
+            this.cover = !this.cover;
         }
     },
 
@@ -29,42 +38,59 @@ export default {
     }
 
 
-
 }
 </script>
 
 <template>
-    <div class="card">
+
+    <!-- implemento la rotazione, se la card è true implementa la classe ruota -->
+    <div class="card" :class="{ 'ruota': cover }" @mouseover="rotazioneCard" @mouseout="rotazioneCard">
         <div class="container-poster">
             <img v-if="info.poster_path" class="img-series-movies" :src="`https://image.tmdb.org/t/p/w342${info.poster_path}`" alt="immagine serie/film">
-            <img v-else class="not-found"
-                :src="'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png'"
-                alt="not found">
+            <img v-else class="not-found" :src="'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png'" alt="not found">
         </div>
-        <!-- nome in italiano -->
-        <h6 v-if="info.original_title">Titolo: {{ info.title }}</h6>
-        <h6 v-else>Titolo: {{ info.name }}</h6>
 
-        <!-- nome originale -->
-        <h6 v-if="info.original_title">Titolo originale: {{ info.original_title }}</h6>
-        <h6 v-else>Titolo originale: {{ info.original_name }}</h6>
+        <div class="card-info">
 
-        <!-- inserisco l'operatore || in modo tale che fornisca un valore predefinito nel caso ci fosse un'undefined, 
-        se la lingua non è presente nell'oggetto bandiere, viene utilizzato il link predefinito all'immagine della bandiera arcobaleno -->
-        <h6>Lingua originale: <img class="flag"
-                :src="bandiere[info.original_language.toLowerCase()] || 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Classic_Rainbow_Flag.png/375px-Classic_Rainbow_Flag.png'">
-        </h6>
-        <div>
-            <h6>Voto:</h6>
-            <i v-for="n in trasformaNumero" :key="n" class="fa-solid fa-star"></i>
+            <!-- Overview -->
+            <h6>Trama:</h6>
+            <p v-if="info.overview">{{info.overview}}</p>
+            <p v-else>Al momento non è disponibile nessuna trama</p>
+
+            <!-- nome in italiano -->
+            <h6 v-if="info.original_title">Titolo: {{ info.title }}</h6>
+            <h6 v-else>Titolo: {{ info.name }}</h6>
+
+            <!-- nome originale -->
+            <h6 v-if="info.original_title">Titolo originale: {{ info.original_title }}</h6>
+            <h6 v-else>Titolo originale: {{ info.original_name }}</h6>
+
+            <!-- inserisco l'operatore || in modo tale che fornisca un valore predefinito nel caso ci fosse un'undefined, 
+            se la lingua non è presente nell'oggetto bandiere, viene utilizzato il link predefinito all'immagine della bandiera arcobaleno -->
+            <h6>Lingua originale: 
+                <img class="flag" :src="bandiere[info.original_language.toLowerCase()] || 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Classic_Rainbow_Flag.png/375px-Classic_Rainbow_Flag.png'">
+            </h6>
+            <div>
+                <h6>Voto:</h6>
+                <i v-for="n in trasformaNumero" :key="n" class="fa-solid fa-star"></i>
+            </div>
         </div>
+
     </div>
 </template>
 
 <style lang="scss" scoped>
 .card {
-    min-height: 650px;
     margin-top: 15px;
+    transition: transform 0.5s, opacity 0.5s;
+    transform-style: preserve-3d;
+
+    // Il tuo stile esistente rimane invariato
+
+    &.ruota {
+        transform: rotateY(180deg);
+        background-color: black;
+    }
 
     .flag {
         width: 30px;
@@ -73,7 +99,7 @@ export default {
 
     .img-series-movies {
         width: 100%;
-        min-height: 300px;
+        min-height: 500px;
         border-radius: 5px;
     }
 
@@ -85,4 +111,27 @@ export default {
         width: 100%;
         height: 500px;
     }
-}</style>
+
+    .card-info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: rotateY(180deg);
+        background-color: black;
+        opacity: 0;
+        transition: opacity 0.5s;
+        border-radius: 5px;
+        color: white;
+    }
+
+    &.ruota .card-info {
+        opacity: 1;
+    }
+
+    p{
+        font-size: 10px;
+    }
+}
+</style>
