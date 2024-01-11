@@ -24,7 +24,7 @@ export default {
                 </div>
 
                 <div>
-                    <input type="text" placeholder="Inserisci il film o la serie che vuoi vedere" v-model.trim="store.searchText" >
+                    <input type="text" placeholder="Inserisci il film o la serie che vuoi vedere" v-model.trim="store.searchText" @keyup.enter="$emit('search')" >
                     <button @click.prevent="$emit('search')">INIZIA</button>
                 </div>
             </div>
