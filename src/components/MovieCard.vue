@@ -85,7 +85,8 @@ export default {
     transition: transform 0.5s, opacity 0.5s;
     transform-style: preserve-3d;
 
-    // Il tuo stile esistente rimane invariato
+
+    // rotazione
 
     &.ruota {
         transform: rotateY(180deg);

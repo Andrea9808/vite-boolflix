@@ -21,6 +21,8 @@ export default {
     },
 
     methods: {
+
+        // CHIAMATA AI FILM
         getMovies() {
 
             let myUrl = store.apiUrl;
@@ -43,10 +45,12 @@ export default {
                     console.log("errori", err);
                 })
                 
+                // richiamo le serie nella chiamata movies
                 this.getSeries();
                 store.searchText = '';
         },
 
+        // CHIAMATA ALLE SERIE
         getSeries(){
 
             let myUrlSeries = store.apiUrlSeries;
