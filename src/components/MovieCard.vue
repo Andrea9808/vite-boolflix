@@ -125,6 +125,8 @@ export default {
         transition: opacity 0.5s;
         border-radius: 5px;
         color: white;
+        padding: 10px;
+        text-align: center;
     }
 
     &.ruota .card-info {
@@ -133,6 +135,10 @@ export default {
 
     p{
         font-size: 10px;
+    }
+
+    .fa-star{
+        color: red;
     }
 }
 </style>
