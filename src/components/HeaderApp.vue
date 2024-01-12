@@ -24,7 +24,7 @@ export default {
                 </div>
 
                 <div>
-                    <select name="selezione genere" v-model="store.searchText">
+                    <select name="selezione genere" v-model="store.selectedGenre">
                         <option value="">Seleziona genere</option>
                         <option v-for="genere in store.genre" :key="genere.id" :value="genere.id">{{ genere.name }}</option>
                     </select>
@@ -57,10 +57,23 @@ export default {
         background-color: red;
         margin-left: 10px;
         padding: 8px 15px;
+        transition:  0.3s ease;
+
+        &:hover {
+            background-color: rgb(140, 34, 34);
+        }
+    }
+
+    select {
+        margin-right: 10px;
+        padding: 8px;
+        background-color: #fff;
+        cursor: pointer;
     }
 
     input {
         padding: 8px;
+        cursor: pointer;
     }
 }
 </style>

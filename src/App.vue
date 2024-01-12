@@ -27,11 +27,11 @@ export default {
 
             let myUrl = store.apiUrl;
 
-            if (store.selectedGenre !== "") {
-                myUrl += `&with_genres=${store.selectedGenre}`;
-            }
+            // if (store.selectedGenre !== "") {
+            //     myUrl += `&with_genres=${store.selectedGenre}`;
+            // }
 
-            console.log("genere selezionato:", store.selectedGenre);
+            //console.log("genere selezionato:", store.selectedGenre);
 
             //se l'utente fa una ricerca
             if (store.searchText !== "") {
