@@ -15,7 +15,7 @@ export default {
                 fr: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/383px-Flag_of_France.svg.png',
                 pt: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/188px-Flag_of_Portugal.svg.png',
                 ko: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/420px-Flag_of_South_Korea.svg.png',
-                jp: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/420px-Flag_of_Japan.svg.png',
+                ja: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/420px-Flag_of_Japan.svg.png',
                 de: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/420px-Flag_of_Germany.svg.png',
             },
 
@@ -130,6 +130,7 @@ export default {
         color: white;
         padding: 10px;
         text-align: center;
+        line-height: 11px;
     }
 
     &.ruota .card-info {
