@@ -27,9 +27,11 @@ export default {
 
             let myUrl = store.apiUrl;
 
-            if (store.selectedGenre) {
-                myUrl += `&query=${store.selectedGenre}`;
-        }
+            if (store.selectedGenre !== "") {
+                myUrl += `&with_genres=${store.selectedGenre}`;
+            }
+
+            console.log("genere selezionato:", store.selectedGenre);
 
             //se l'utente fa una ricerca
             if (store.searchText !== "") {
@@ -48,54 +50,53 @@ export default {
                 .catch((err) => {
                     console.log("errori", err);
                 })
-                
-                // richiamo le serie nella chiamata movies
-                this.getGenre();
-                this.getSeries();
-                store.searchText = '';
+
+            // richiamo le serie nella chiamata movies
+            this.getSeries();
+            store.searchText = '';
         },
 
         // CHIAMATA ALLE SERIE
-        getSeries(){
+        getSeries() {
 
             let myUrlSeries = store.apiUrlSeries;
 
             //se l'utente fa una ricerca
-            if(store.searchText !== ""){
+            if (store.searchText !== "") {
                 myUrlSeries += `&query=${store.searchText}`
             }
 
 
             console.log("myUrlSeries:", myUrlSeries);
-            
+
             axios
                 .get(myUrlSeries)
                 .then((res => {
                     console.log(res.data.results);
                     store.series = res.data.results
                 }))
-                .catch((err)=> {
+                .catch((err) => {
                     console.log("errori", err);
                 })
 
         },
 
-        getGenre(){
+        getGenre() {
             axios
-            .get(store.apiGenre)
-            .then((res =>{
-                console.log(res.data.genres);
-                store.genre = res.data.genres;  
-            }))
-            .catch((err) =>{
-                console.log("errori",err);
-            })
+                .get(store.apiGenre)
+                .then((res => {
+                    console.log(res.data.genres);
+                    store.genre = res.data.genres;
+                }))
+                .catch((err) => {
+                    console.log("errori", err);
+                })
         }
     },
 
     created() {
         this.getMovies();
-        
+        this.getGenre();
     }
 
 

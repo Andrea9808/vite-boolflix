@@ -21,13 +21,13 @@ export default {
             <div class="intro">
                 <div class="logo">
                     <h3>BollFlix</h3>
-                    <select name="selezione genere" v-model="store.selectedGenre" @change="$emit('search')">
-                        <option value="">Seleziona genere</option>
-                        <option v-for="genere in store.genre" :key="genere.id" :value="genere.name">{{ genere.name }}</option>
-                    </select>
                 </div>
 
                 <div>
+                    <select name="selezione genere" v-model="store.searchText">
+                        <option value="">Seleziona genere</option>
+                        <option v-for="genere in store.genre" :key="genere.id" :value="genere.id">{{ genere.name }}</option>
+                    </select>
                     <input type="text" placeholder="Cerca il tuo film/serie" v-model.trim="store.searchText"
                         @keyup.enter="$emit('search')">
                     <button @click.prevent="$emit('search')">INIZIA</button>
