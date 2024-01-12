@@ -21,10 +21,15 @@ export default {
             <div class="intro">
                 <div class="logo">
                     <h3>BollFlix</h3>
+                    <select name="selezione genere" v-model="store.selectedGenre" @change="$emit('search')">
+                        <option value="">Seleziona genere</option>
+                        <option v-for="genere in store.genre" :key="genere.id" :value="genere.name">{{ genere.name }}</option>
+                    </select>
                 </div>
 
                 <div>
-                    <input type="text" placeholder="Cerca il tuo film/serie" v-model.trim="store.searchText" @keyup.enter="$emit('search')" >
+                    <input type="text" placeholder="Cerca il tuo film/serie" v-model.trim="store.searchText"
+                        @keyup.enter="$emit('search')">
                     <button @click.prevent="$emit('search')">INIZIA</button>
                 </div>
             </div>
@@ -41,20 +46,20 @@ export default {
 
     .logo {
         color: red;
-        
-        h3{
+
+        h3 {
             font-size: 50px;
         }
     }
 
-    button{
+    button {
         color: white;
         background-color: red;
         margin-left: 10px;
         padding: 8px 15px;
     }
 
-    input{
+    input {
         padding: 8px;
     }
 }

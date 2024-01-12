@@ -27,6 +27,10 @@ export default {
 
             let myUrl = store.apiUrl;
 
+            if (store.selectedGenre) {
+                myUrl += `&query=${store.selectedGenre}`;
+        }
+
             //se l'utente fa una ricerca
             if (store.searchText !== "") {
                 myUrl += `&query=${store.searchText}`
@@ -46,6 +50,7 @@ export default {
                 })
                 
                 // richiamo le serie nella chiamata movies
+                this.getGenre();
                 this.getSeries();
                 store.searchText = '';
         },
@@ -73,11 +78,24 @@ export default {
                     console.log("errori", err);
                 })
 
+        },
+
+        getGenre(){
+            axios
+            .get(store.apiGenre)
+            .then((res =>{
+                console.log(res.data.genres);
+                store.genre = res.data.genres;  
+            }))
+            .catch((err) =>{
+                console.log("errori",err);
+            })
         }
     },
 
     created() {
         this.getMovies();
+        
     }
 
 
